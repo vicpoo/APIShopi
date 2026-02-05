@@ -5,17 +5,24 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/vicpoo/apiShop/src/core"
 	"github.com/vicpoo/apiShop/src/users/infrastructure"
+	clothes_infrastructure "github.com/vicpoo/apiShop/src/clothes/infrastructure"
 )
 
 func main() {
+	// Inicializar base de datos
 	core.InitDB()
 
+	// Configurar router de Gin
 	router := gin.Default()
 
+	// Configurar CORS
 	router.Use(CORSMiddleware())
 
 	// Configurar rutas de usuarios
 	infrastructure.SetupUserRoutes(router)
+
+	// Configurar rutas de prendas (clothes)
+	clothes_infrastructure.SetupClothRoutes(router)
 
 	// Iniciar servidor
 	router.Run(":8000")

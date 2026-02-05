@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     name VARCHAR(50),
-    lastname VARCHAR(50),
+    lastname VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS clothes (
