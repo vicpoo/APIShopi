@@ -1,4 +1,3 @@
-// infrastructure/cloth_repository_impl.go
 package infrastructure
 
 import (
@@ -295,7 +294,6 @@ func (mysql *MySQLClothRepository) FindByPriceRange(minPrice, maxPrice float64) 
 	return mysql.scanClothes(rows)
 }
 
-// Método auxiliar para escanear múltiples prendas
 func (mysql *MySQLClothRepository) scanClothes(rows *sql.Rows) ([]entities.Cloth, error) {
 	var clothes []entities.Cloth
 	
@@ -324,7 +322,6 @@ func (mysql *MySQLClothRepository) scanClothes(rows *sql.Rows) ([]entities.Cloth
 			return nil, err
 		}
 
-		// Asignar valores nulos si existen
 		if description.Valid {
 			cloth.SetDescription(description.String)
 		}
@@ -352,7 +349,6 @@ func (mysql *MySQLClothRepository) scanClothes(rows *sql.Rows) ([]entities.Cloth
 	return clothes, nil
 }
 
-// Métodos auxiliares para manejar valores nulos
 func (mysql *MySQLClothRepository) nullString(s string) interface{} {
 	if s == "" {
 		return sql.NullString{}

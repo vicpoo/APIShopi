@@ -1,4 +1,3 @@
-// infrastructure/dependencies.go
 package infrastructure
 
 import (
@@ -28,7 +27,7 @@ func InitClothDependencies() (
 	findBySizeUseCase := application.NewFindClothBySizeUseCase(repo)
 	findByPriceRangeUseCase := application.NewFindClothByPriceRangeUseCase(repo)
 
-	// Controladores
+	// Controladores (ahora manejan archivos)
 	createController := NewCreateClothController(createUseCase)
 	updateController := NewUpdateClothController(updateUseCase)
 	deleteController := NewDeleteClothController(deleteUseCase)

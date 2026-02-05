@@ -1,4 +1,3 @@
-// infrastructure/routes.go
 package infrastructure
 
 import (
@@ -11,14 +10,17 @@ func SetupClothRoutes(router *gin.Engine) {
 		getByIDController, getAllController, findByNameController,
 		findBySizeController, findByPriceRangeController := InitClothDependencies()
 
+	// Servir archivos estáticos desde la carpeta uploads
+	router.Static("/uploads", "./uploads")
+
 	// Grupo de rutas para prendas
 	clothRoutes := router.Group("/api/clothes")
 	{
 		// Rutas CRUD básicas
 		clothRoutes.GET("/", getAllController.Run)
 		clothRoutes.GET("/:id", getByIDController.Run)
-		clothRoutes.POST("/", createController.Run)
-		clothRoutes.PUT("/:id", updateController.Run)
+		clothRoutes.POST("/", createController.Run)     
+		clothRoutes.PUT("/:id", updateController.Run)   
 		clothRoutes.DELETE("/:id", deleteController.Run)
 		
 		// Rutas de búsqueda
